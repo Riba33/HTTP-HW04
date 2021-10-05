@@ -1,9 +1,9 @@
 package Model;
 
 public enum OrderStatus {
-    PLACED ("placed"),
-    APPROVED ("approved"),
-    DELIVERED ("delivered");
+    placed ("placed"),
+    approved ("approved"),
+    delivered ("delivered");
     private String name;
 
     OrderStatus(String name) {

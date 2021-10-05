@@ -1,5 +1,6 @@
-package Repository;
+package Util;
 
+import Util.PropertiesLoader;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -9,7 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 
 public class RetrofitConfig {
-    public static <T> T createClient(String apiUrl, Class<T> clientClass) {
+    private static final String apiUrl = PropertiesLoader.getProperty("db.url");;
+    public static <T> T createClient(Class<T> clientClass) {
         return new Retrofit.Builder()
                 .client(new OkHttpClient())
                 .baseUrl(apiUrl)

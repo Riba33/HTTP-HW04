@@ -1,9 +1,9 @@
 package Model;
 
 public enum PetStatus {
-    AVAILABLE ("available"),
-    PENDING ("pending"),
-    SOLD ("sold");
+    available ("available"),
+    pending ("pending"),
+    sold ("sold");
     private String name;
 
     PetStatus(String name) {
