@@ -1,7 +1,6 @@
 package Repository;
 
 import Model.ApiResponse;
-import Model.Order;
 import Model.User;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -14,9 +13,9 @@ public interface RetrofitClientUser {
     @Headers("Content-Type: application/json")
     Call<ApiResponse> addListOfUsers(@Body List<User> users);
 
-    @POST("user/{username}")
+    @GET("user/{userName}")
     @Headers("Content-Type: application/json")
-    Call<User> getUserByUsername(@Path("username") String userName);
+    Call<User> getUserByUsername(@Path("userName") String userName);
 
     @PUT("user/{username}")
     @Headers("Content-Type: application/json")

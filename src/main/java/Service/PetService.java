@@ -52,7 +52,12 @@ public class PetService {
         return RetrofitConfig.execute(listCall);
     }
     @SneakyThrows
-    public ApiResponse updatePetById(Long id, String name, String status){
+    public Pet getPetById(Long id){
+        Call<Pet> petCall = clientPet.getPet(id);
+        return RetrofitConfig.execute(petCall);
+    }
+    @SneakyThrows
+    public ApiResponse updatePetById(Long id, String name, PetStatus status){
         Call<ApiResponse> call = clientPet.updateById(id, name, status);
         return RetrofitConfig.execute(call);
     }

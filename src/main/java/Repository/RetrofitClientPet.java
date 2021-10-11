@@ -35,7 +35,7 @@ public interface RetrofitClientPet {
     @FormUrlEncoded
     @POST("pet/{petId}")
     @Headers("Content-Type: application/json")
-    Call<ApiResponse> updateById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
+    Call<ApiResponse> updateById(@Path("petId") Long id, @Field("name") String name, @Field("status") PetStatus status);
 
     @DELETE("pet/{petId}")
     @Headers("Content-Type: application/json")
