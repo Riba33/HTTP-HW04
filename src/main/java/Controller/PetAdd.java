@@ -28,7 +28,8 @@ public class PetAdd extends BaseController{
         Pet pet = new Pet();
         System.out.println("Enter petId.");
         pet.setId(getId());
-        pet.setCategory(makeCategory());
+        Category category = makeCategory();
+        pet.setCategory(category);
         System.out.println("Enter petName");
         pet.setName(scanner.next());
         pet.setPhotoUrls(makePhotoUrls());
@@ -41,15 +42,16 @@ public class PetAdd extends BaseController{
         System.out.println("Enter categoryId");
         category.setId(getId());
         System.out.println("Enter categoryName");
-        category.setName(scanner.nextLine());
+        category.setName(scanner.next());
         return category;
     }
     String[] makePhotoUrls(){
         List<String> list= new ArrayList<String>();
         do {
             System.out.println("Enter photo url");
-            list.add(scanner.nextLine());
+            list.add(scanner.next());
             System.out.println("Do you want to add another photo url?");
+
         } while (yesOrNo());
         return list.toArray(new String[list.size()]);
     }
@@ -82,5 +84,22 @@ public class PetAdd extends BaseController{
                 break;
         }
         return petStatus;
+    }
+    Long checkPetId(){
+        Pet pet;
+        PetService petService = PetService.getInstance();
+        Long id;
+        boolean i;
+        do {
+            i = false;
+            System.out.println("Enter petId");
+            id = getId();
+            pet = petService.getPetById(id);
+            if (pet == null) {
+                System.out.println("This Pet is not found.\nDo you want enter another orderId?");
+                i = yesOrNo();
+            }
+        } while (i);
+        return id;
     }
 }

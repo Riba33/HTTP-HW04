@@ -1,7 +1,9 @@
 package Controller;
 
+import Model.Order;
 import Model.Pet;
 import Service.PetService;
+import Service.StoreService;
 import lombok.SneakyThrows;
 
 public class PetFindById extends PetAdd{
@@ -15,8 +17,8 @@ public class PetFindById extends PetAdd{
         return petController;
     }
     public Pet petFindById(){
-        System.out.println("Enter petId");
-        Long id = getId();
+        Long id = checkPetId();
         return PetService.getInstance().getPetById(id);
     }
+
 }

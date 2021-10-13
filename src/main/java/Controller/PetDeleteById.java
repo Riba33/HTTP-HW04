@@ -15,8 +15,7 @@ public class PetDeleteById extends PetAdd{
         return petController;
     }
     public ApiResponse deletePetById(){
-        System.out.println("Enter petId");
-        Long id = getId();
+        Long id = checkPetId();
         return PetService.getInstance().deletePetById(id);
     }
 }

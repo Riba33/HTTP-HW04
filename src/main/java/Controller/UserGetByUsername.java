@@ -18,18 +18,23 @@ public class UserGetByUsername extends BaseController{
     }
 
     public User getUserByUserName() throws IOException {
+        String userName = checkUserName();
+        return UserService.getInstance().getUserByUserName(userName);
+    }
+    private String checkUserName() throws IOException {
         String userName;
         UserService userService = UserService.getInstance();
         User user;
-        boolean i = false;
+        boolean i;
         do {
+            i = false;
             userName = getUsername();
             user = userService.getUserByUserName(userName);
             if (user == null) {
                 System.out.println("This userName is not found.\nDo you want enter another userName?");
                 i = yesOrNo();
             } else i = false;
-        } while (i == true);
-        return user;
+        } while (i);
+        return userName;
     }
 }

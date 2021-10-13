@@ -34,8 +34,15 @@ public class StoreService {
 
     @SneakyThrows
     public Order getOrderById(Long id){
-        Call<Order> orderCall = store.getOrderById(id);
-        return RetrofitConfig.execute(orderCall);
+        Call<Order> orderCall;
+        Order order;
+        try {
+            orderCall = store.getOrderById(id);
+            order = RetrofitConfig.execute(orderCall);
+        } catch (Exception e) {
+            order = null;
+        }
+        return order;
     }
 
     @SneakyThrows

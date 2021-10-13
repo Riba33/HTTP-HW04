@@ -7,7 +7,7 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 
-public class UserDeleteByUsername extends BaseController{
+public class UserDeleteByUsername extends UserGetByUsername{
     public static UserDeleteByUsername userController;
 
     @SneakyThrows

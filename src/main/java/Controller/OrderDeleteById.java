@@ -4,7 +4,7 @@ import Model.ApiResponse;
 import Service.StoreService;
 import lombok.SneakyThrows;
 
-public class OrderDeleteById extends BaseController{
+public class OrderDeleteById extends OrderAdd{
     public static OrderDeleteById orderController;
 
     @SneakyThrows
@@ -15,8 +15,7 @@ public class OrderDeleteById extends BaseController{
         return orderController;
     }
     public ApiResponse deleteOrderById(){
-        System.out.println("Enter orderId");
-        Long id = getId();
+        Long id = getAndCheckOrderId();
         return StoreService.getInstance().deleteOrderById(id);
     }
 }

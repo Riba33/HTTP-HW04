@@ -4,7 +4,7 @@ import Model.ApiResponse;
 import Service.PetService;
 import lombok.SneakyThrows;
 
-public class PetUploadImage extends BaseController{
+public class PetUploadImage extends PetAdd{
     public static PetUploadImage petController;
 
     @SneakyThrows
@@ -15,12 +15,12 @@ public class PetUploadImage extends BaseController{
         return petController;
     }
     public ApiResponse uploadImage(){
-        System.out.println("Enter petId");
-        Long id = getId();
+        Long id = checkPetId();
+        scanner.nextLine();
         System.out.println("Enter additional metadata");
-        String metaData = scanner.next();
+        String metaData = scanner.nextLine();
         System.out.println("Enter url for image");
-        String url = scanner.next();
+        String url = scanner.nextLine();
         return PetService.getInstance().uploadImage(id,url,metaData);
     }
 }

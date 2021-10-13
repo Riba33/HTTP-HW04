@@ -4,7 +4,7 @@ import Model.Order;
 import Service.StoreService;
 import lombok.SneakyThrows;
 
-public class OrderFindById extends BaseController{
+public class OrderFindById extends OrderAdd{
     public static OrderFindById orderController;
 
     @SneakyThrows
@@ -15,8 +15,7 @@ public class OrderFindById extends BaseController{
         return orderController;
     }
     public Order findOrderById(){
-        System.out.println("Enter orderId");
-        Long id = getId();
+        Long id = getAndCheckOrderId();
         return StoreService.getInstance().getOrderById(id);
     }
 

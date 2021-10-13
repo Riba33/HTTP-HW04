@@ -26,8 +26,8 @@ public class PetService {
 
     RetrofitClientPet clientPet = RetrofitConfig.createClient(RetrofitClientPet.class);
     @SneakyThrows
-    public ApiResponse uploadImage(Long id, String fileName, String metaData){
-        File file = new File(fileName);
+    public ApiResponse uploadImage(Long id, String fileUrl, String metaData){
+        File file = new File(fileUrl);
         MultipartBody.Part filePart = MultipartBody.Part.createFormData(
                 "file",
                 file.getName(),
@@ -53,8 +53,15 @@ public class PetService {
     }
     @SneakyThrows
     public Pet getPetById(Long id){
-        Call<Pet> petCall = clientPet.getPet(id);
-        return RetrofitConfig.execute(petCall);
+        Call<Pet> petCall;
+        Pet pet;
+        try {
+            petCall = clientPet.getPet(id);
+            pet = RetrofitConfig.execute(petCall);
+        } catch (Exception e) {
+            pet = null;
+        }
+        return pet;
     }
     @SneakyThrows
     public ApiResponse updatePetById(Long id, String name, PetStatus status){

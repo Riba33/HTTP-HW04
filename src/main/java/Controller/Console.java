@@ -17,7 +17,7 @@ public class Console extends BaseController{
     }
     public void start() {
         do {
-            System.out.println("Select model: 1 - Pet, 2 - Store, 3 - User, 0 - Exit");
+            System.out.println("Select model: 1 - Pet, 2 - Store, 3 - User.");
             int i = selectNumber(3, 0);
             switchSelected(i);
             System.out.println("Do you want to return to MainMenu?");
@@ -35,7 +35,6 @@ public class Console extends BaseController{
             case 3:
                 UserController.getInstance().userMenu();
                 break;
-            case 0: break;
         }
     }
 }

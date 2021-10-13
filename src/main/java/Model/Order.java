@@ -24,6 +24,6 @@ public class Order implements Serializable {
     @SerializedName("status")
     private OrderStatus status;
     @SerializedName("complete")
-    boolean complete;
+    private boolean complete;
 
 }

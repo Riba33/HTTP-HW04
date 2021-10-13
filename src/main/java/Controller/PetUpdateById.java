@@ -16,10 +16,9 @@ public class PetUpdateById extends PetAdd{
         return petController;
     }
     public ApiResponse petUpdateById(){
-        System.out.println("Enter petId");
-        Long id = getId();
+        Long id = checkPetId();
         System.out.println("Enter petName.");
-        String name = scanner.nextLine();
+        String name = scanner.next();
         PetStatus status = getStatus();
         return PetService.getInstance().updatePetById(id, name, status);
     }
