@@ -96,7 +96,7 @@ public class PetAdd extends BaseController{
             id = getId();
             pet = petService.getPetById(id);
             if (pet == null) {
-                System.out.println("This Pet is not found.\nDo you want enter another orderId?");
+                System.out.println("This Pet is not found.\nDo you want enter another petId?");
                 i = yesOrNo();
             }
         } while (i);
